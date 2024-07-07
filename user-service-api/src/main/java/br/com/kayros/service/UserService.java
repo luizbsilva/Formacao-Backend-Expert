@@ -7,11 +7,12 @@ import br.com.kayros.model.response.UserResponse;
 import java.util.List;
 
 public interface UserService {
-    UserResponse findById(final String id);
 
-    void save(CreateUserRequest request);
+  UserResponse findById(final String id);
 
-    List<UserResponse> findAll();
+  void save(CreateUserRequest request);
 
-    UserResponse update(final String id, final UpdateUserRequest request);
+  List<UserResponse> findAll();
+
+  UserResponse update(final String id, final UpdateUserRequest request);
 }

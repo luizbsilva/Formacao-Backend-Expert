@@ -15,10 +15,10 @@ import java.util.Set;
 @Builder
 public class User {
 
-    @Id
-    private String id;
-    private String name;
-    private String email;
-    private String password;
-    private Set<ProfileEnum> profiles;
+  @Id
+  private String id;
+  private String name;
+  private String email;
+  private String password;
+  private Set<ProfileEnum> profiles;
 }

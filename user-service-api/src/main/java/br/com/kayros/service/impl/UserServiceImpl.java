@@ -19,57 +19,57 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository repository;
-    private final UserMapper mapper;
-    private final BCryptPasswordEncoder encoder;
+  private final UserRepository repository;
+  private final UserMapper mapper;
+  private final BCryptPasswordEncoder encoder;
 
-    @Override
-    public UserResponse findById(final String id) {
-        return mapper.fromEntity(find(id));
-    }
+  @Override
+  public UserResponse findById(final String id) {
+    return mapper.fromEntity(find(id));
+  }
 
-    @Override
-    public void save(CreateUserRequest request) {
-        verifyIfEmailAlreadyExists(request.email(), null);
+  @Override
+  public void save(CreateUserRequest request) {
+    verifyIfEmailAlreadyExists(request.email(), null);
+    repository.save(
+        mapper.fromRequest(request)
+            .withPassword(encoder.encode(request.password()))
+    );
+  }
+
+  @Override
+  public List<UserResponse> findAll() {
+    return repository.findAll()
+        .stream().map(mapper::fromEntity)
+        .toList();
+  }
+
+  @Override
+  public UserResponse update(final String id, final UpdateUserRequest request) {
+    User entity = find(id);
+    verifyIfEmailAlreadyExists(request.email(), id);
+    return mapper.fromEntity(
         repository.save(
-                mapper.fromRequest(request)
-                        .withPassword(encoder.encode(request.password()))
-        );
-    }
+            mapper.update(request, entity)
+                .withPassword(request.password() != null ? encoder.encode(request.password())
+                    : entity.getPassword())
+        )
+    );
+  }
 
-    @Override
-    public List<UserResponse> findAll() {
-        return repository.findAll()
-                .stream().map(mapper::fromEntity)
-                .toList();
-    }
+  private User find(final String id) {
+    return repository.findById(id)
+        .orElseThrow(() -> new ResourceNotFoundException(
+            "Object not found. Id: " + id + ", Type: " + UserResponse.class.getSimpleName()
+        ));
+  }
 
-    @Override
-    public UserResponse update(final String id, final UpdateUserRequest request) {
-        User entity = find(id);
-        verifyIfEmailAlreadyExists(request.email(), id);
-        return mapper.fromEntity(
-                repository.save(
-                        mapper.update(request, entity)
-                                .withPassword(request.password() != null ? encoder.encode(request.password())
-                                        : entity.getPassword())
-                )
-        );
-    }
-
-    private User find(final String id) {
-        return repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(
-                        "Object not found. Id: " + id + ", Type: " + UserResponse.class.getSimpleName()
-                ));
-    }
-
-    private void verifyIfEmailAlreadyExists(final String email, final String id) {
-        repository.findByEmail(email)
-                .filter(user -> !user.getId().equals(id))
-                .ifPresent(user -> {
-                    throw new DataIntegrityViolationException("Email [ " + email + " ] already exists");
-                });
-    }
+  private void verifyIfEmailAlreadyExists(final String email, final String id) {
+    repository.findByEmail(email)
+        .filter(user -> !user.getId().equals(id))
+        .ifPresent(user -> {
+          throw new DataIntegrityViolationException("Email [ " + email + " ] already exists");
+        });
+  }
 
 }

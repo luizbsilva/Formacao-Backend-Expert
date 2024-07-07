@@ -17,27 +17,27 @@ import static org.springframework.http.HttpStatus.CREATED;
 @RequiredArgsConstructor
 public class UserControllerImpl implements UserController {
 
-    private final UserService userService;
+  private final UserService userService;
 
-    @Override
-    public ResponseEntity<UserResponse> findById(final String id) {
-        return ResponseEntity.ok().body(userService.findById(id));
-    }
+  @Override
+  public ResponseEntity<UserResponse> findById(final String id) {
+    return ResponseEntity.ok().body(userService.findById(id));
+  }
 
-    @Override
-    public ResponseEntity<Void> save(final CreateUserRequest createUserRequest) {
-        userService.save(createUserRequest);
-        return ResponseEntity.status(CREATED.value()).build();
-    }
+  @Override
+  public ResponseEntity<Void> save(final CreateUserRequest createUserRequest) {
+    userService.save(createUserRequest);
+    return ResponseEntity.status(CREATED.value()).build();
+  }
 
-    @Override
-    public ResponseEntity<List<UserResponse>> findAll() {
-        return ResponseEntity.ok().body(userService.findAll());
-    }
+  @Override
+  public ResponseEntity<List<UserResponse>> findAll() {
+    return ResponseEntity.ok().body(userService.findAll());
+  }
 
-    @Override
-    public ResponseEntity<UserResponse> update(final String id,
-                                               final UpdateUserRequest updateUserRequest) {
-        return ResponseEntity.ok().body(userService.update(id, updateUserRequest));
-    }
+  @Override
+  public ResponseEntity<UserResponse> update(final String id,
+      final UpdateUserRequest updateUserRequest) {
+    return ResponseEntity.ok().body(userService.update(id, updateUserRequest));
+  }
 }
