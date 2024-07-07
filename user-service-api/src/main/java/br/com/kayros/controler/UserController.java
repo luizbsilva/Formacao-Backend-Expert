@@ -44,9 +44,7 @@ public interface UserController {
       @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(mediaType = APPLICATION_JSON_VALUE, schema = @Schema(implementation = StandardError.class))
       )})
   @PostMapping
-  ResponseEntity<Void> save(
-      @Valid @RequestBody final CreateUserRequest createUserRequest
-  );
+  ResponseEntity<Void> save(@Valid @RequestBody final CreateUserRequest createUserRequest);
 
   @Operation(summary = "Find all users")
   @ApiResponses(value = {
@@ -69,6 +67,5 @@ public interface UserController {
   ResponseEntity<UserResponse> update(
       @Parameter(description = "User id", required = true, example = "64a2dc9d48a6a977cdca11c8")
       @PathVariable(name = "id") final String id,
-      @Valid @RequestBody final UpdateUserRequest updateUserRequest
-  );
+      @Valid @RequestBody final UpdateUserRequest updateUserRequest);
 }
