@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: 'user-serveci-api'
+  data:
+    mongodb:
+      uri: 'mongodb+srv://help-desk-user:3O7DVmok0l3j0hJ3@clusterhelpdesk.2ppcatr.mongodb.net/helpdesk_db?retryWrites=true&w=majority&appName=ClusterHelpDesk'
+      auto-index-creation: true
+springdoc:
+  openapi:
+    title: 'User Servece API'
+    description: 'API para validacao de usuarios'
+    version: '1.0.0'
