@@ -1,6 +1,6 @@
 package br.com.kayros.model.response;
 
-import br.com.kairos.model.enums.ProfileEnum;
+import br.com.kayros.model.enums.ProfileEnum;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Set;

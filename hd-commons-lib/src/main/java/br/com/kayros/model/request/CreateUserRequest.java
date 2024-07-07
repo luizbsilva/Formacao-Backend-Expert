@@ -1,6 +1,6 @@
 package br.com.kayros.model.request;
 
-import br.com.kairos.model.enums.ProfileEnum;
+import br.com.kayros.model.enums.ProfileEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
