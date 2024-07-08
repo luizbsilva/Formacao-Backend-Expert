@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: 'order-service-api'
+  profiles:
+    active: ${PROFILE_ACTIVE}
