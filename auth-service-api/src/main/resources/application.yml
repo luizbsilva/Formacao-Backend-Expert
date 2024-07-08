@@ -4,9 +4,6 @@ spring:
   data:
     mongodb:
       uri: 'mongodb+srv://${MONGO_USER_DB}:${MONGO_PASSWORD_DB}@clusterhelpdesk.2ppcatr.mongodb.net/helpdesk_db?retryWrites=true&w=majority&appName=ClusterHelpDesk'
-server:
-  port: 8888
-
 springdoc:
   openapi:
     title: 'Auth Service API'
