@@ -14,3 +14,5 @@ springdoc:
     description: 'API para autenticação de usuarios'
     version: '1.0.0'
 
+jwt.secret: 'LvyRwI33IiK3ajPHOrHVEf5H8g8uST3IAR3c1cKCn+U9X+F3KcOLmbjRr9fR7uIV'
+jwt.expiration: 120000
