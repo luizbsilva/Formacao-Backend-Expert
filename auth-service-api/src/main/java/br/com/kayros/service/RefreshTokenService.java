@@ -5,5 +5,6 @@ import br.com.kayros.models.RefreshToken;
 
 public interface RefreshTokenService {
   RefreshToken save(final String username);
+
   RefreshTokenResponse refreshToken(final String refreshTokenId);
 }

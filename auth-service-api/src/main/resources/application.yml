@@ -15,6 +15,6 @@ springdoc:
 
 jwt:
   expiration-sec:
-    refresh-token: 150000
+    refresh-token: 3600
   expiration: 120000
   secret: 'LvyRwI33IiK3ajPHOrHVEf5H8g8uST3IAR3c1cKCn+U9X+F3KcOLmbjRr9fR7uIV'
