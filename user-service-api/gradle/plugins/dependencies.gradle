@@ -7,6 +7,7 @@ repositories {
 dependencies {
     // Biblioteca de código comum
     implementation 'br.com.kayros:hd-commons-lib:1.0.0'
+
     // Actuator - Monitoramento e gerenciamento de aplicações Spring Boot
     implementation 'org.springframework.boot:spring-boot-actuator'
 

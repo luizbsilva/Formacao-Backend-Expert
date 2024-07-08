@@ -1,8 +1,10 @@
 package br.com.kayros.service;
 
 import static br.com.kayros.creator.CreatorUtils.generateMock;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -62,12 +64,9 @@ class UserServiceTest {
   void whenCallFindByIdWithInvalidIdThenThrowResourceNotFoundException() {
     when(repository.findById(anyString())).thenReturn(Optional.empty());
 
-    try {
-      service.findById("1");
-    } catch (Exception e) {
-      assertEquals(ResourceNotFoundException.class, e.getClass());
-      assertEquals("Object not found. Id: 1, Type: UserResponse", e.getMessage());
-    }
+    assertAll(
+        () -> assertThrows(ResourceNotFoundException.class, () -> service.findById("1"))
+    );
 
     verify(repository).findById(anyString());
     verify(mapper, times(0)).fromEntity(any(User.class));
@@ -131,13 +130,9 @@ class UserServiceTest {
 
     when(repository.findById(anyString())).thenReturn(Optional.empty());
 
-    try {
-      service.update("1", request);
-    } catch (Exception e) {
-      assertEquals(ResourceNotFoundException.class, e.getClass());
-      assertEquals("Object not found. Id: 1, Type: UserResponse", e.getMessage());
-    }
-
+    assertAll(
+        () -> assertThrows(ResourceNotFoundException.class, () -> service.update("1", request))
+    );
     verify(repository).findById(anyString());
     verify(mapper, times(0)).update(any(), any());
     verify(encoder, times(0)).encode(request.password());
