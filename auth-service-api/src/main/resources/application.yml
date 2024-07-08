@@ -1,16 +1,15 @@
 spring:
   application:
-    name: 'user-serveci-api'
+    name: 'auth-service-api'
   data:
     mongodb:
       uri: 'mongodb+srv://${MONGO_USER_DB}:${MONGO_PASSWORD_DB}@clusterhelpdesk.2ppcatr.mongodb.net/helpdesk_db?retryWrites=true&w=majority&appName=ClusterHelpDesk'
-      auto-index-creation: true
 server:
   port: 8888
 
 springdoc:
   openapi:
-    title: 'User Servece API'
+    title: 'Auth Service API'
     description: 'API para autenticação de usuarios'
     version: '1.0.0'
 

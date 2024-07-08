@@ -1,6 +1,6 @@
 spring:
   application:
-    name: 'user-serveci-api'
+    name: 'user-service-api'
   data:
     mongodb:
       uri: 'mongodb+srv://${MONGO_USER_DB}:${MONGO_PASSWORD_DB}@clusterhelpdesk.2ppcatr.mongodb.net/helpdesk_db?retryWrites=true&w=majority&appName=ClusterHelpDesk'
@@ -10,7 +10,7 @@ server:
 
 springdoc:
   openapi:
-    title: 'User Servece API'
+    title: 'User Service API'
     description: 'API para validacao de usuarios'
     version: '1.0.0'
 
