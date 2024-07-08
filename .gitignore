@@ -1,3 +1,4 @@
-/hd-commons-lib/.idea/
-/auth-service-api/.idea/
-/user-service-api/.idea/
+hd-commons-lib/.idea/
+auth-service-api/.idea/
+user-service-api/.idea/
+*.pb
