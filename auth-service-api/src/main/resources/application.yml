@@ -1,17 +1,6 @@
 spring:
   application:
     name: 'auth-service-api'
-  data:
-    mongodb:
-      uri: 'mongodb+srv://${MONGO_USER_DB}:${MONGO_PASSWORD_DB}@clusterhelpdesk.2ppcatr.mongodb.net/helpdesk_db?retryWrites=true&w=majority&appName=ClusterHelpDesk'
-springdoc:
-  openapi:
-    title: 'Auth Service API'
-    description: 'API para autenticação de usuarios'
-    version: '1.0.0'
-
-jwt:
-  expiration-sec:
-    refresh-token: 3600
-  expiration: 120000
-  secret: 'LvyRwI33IiK3ajPHOrHVEf5H8g8uST3IAR3c1cKCn+U9X+F3KcOLmbjRr9fR7uIV'
+  cloud:
+    config:
+      uri: ${CONFIG_SERVER_URI}
