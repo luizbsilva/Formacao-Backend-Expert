@@ -20,8 +20,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class RefreshTokenServiceImpl implements RefreshTokenService {
 
-//  @Value("${jwt.expiration-sec.refresh-token}")
-//  private Long refreshTokenExpirationSec;
+  @Value("${jwt.expiration-sec.refresh-token}")
+  private Long refreshTokenExpirationSec;
 
   private final RefreshTokenRepository repository;
   private final UserDetailsService userDetailsService;
@@ -33,7 +33,7 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
         RefreshToken.builder()
             .id(UUID.randomUUID().toString())
             .createdAt(now())
-            .expiresAt(now().plusHours(1L))
+            .expiresAt(now().plusHours(refreshTokenExpirationSec))
             .username(username)
             .build()
     );
